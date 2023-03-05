@@ -16,7 +16,7 @@ COUNTER=1
 #for file in "${audioFiles[@]}"; do
 for i in "${audioFiles[@]}"; do
     mkdir "$1/transcripts/$COUNTER"
-    whisper "$i" --language Spanish -o "$1/transcripts/$COUNTER"
+    whisper "$i" --language Spanish -o "$1/transcripts/$COUNTER" --task translate
     mv "$i" "$1/completed"
     COUNTER=$(( COUNTER + 1))
   done
