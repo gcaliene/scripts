@@ -15,8 +15,11 @@ COUNTER=1
 #mapfile -t lsVar < <(ls -d -- *)
 #for file in "${audioFiles[@]}"; do
 for i in "${audioFiles[@]}"; do
+  echo "$1"
     mkdir "$1/transcripts/$COUNTER"
-    whisper "$i" --language Spanish -o "$1/transcripts/$COUNTER" --task translate
+    whisper "$i" --language Spanish -o "$1/transcripts/$COUNTER" --task translate --device cuda
+#    whisper "$i" --language Spanish --task translate --device cuda
+
     mv "$i" "$1/completed"
     COUNTER=$(( COUNTER + 1))
   done
