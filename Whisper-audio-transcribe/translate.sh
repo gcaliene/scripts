@@ -22,4 +22,7 @@ for i in "${audioFiles[@]}"; do
 
     mv "$i" "$1/completed"
     COUNTER=$(( COUNTER + 1))
-  done
+done
+
+# Split audio every 5 minutes with ffmpeg and save to a folder
+ ffmpeg -i somefile.mp3 -f segment -segment_time 300 -c copy out%03d.mp3
